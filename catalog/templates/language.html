@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MOVIE CATALOGUE</title>
+</head>
+<body>
+	<div>
+		{% if 'username' not in session %}
+		<a href="{{url_for('showLogin')}}">LOGIN</a>
+		{% else %}
+		<a href="{{url_for('logout')}}">LOGOUT</a>
+		{% endif %}
+		<a href="{{url_for('newLanguage')}}">ADD LANGUAGE</a>
+	</div>
+	<form action="#" method="POST">
+		<h2>LANGUAGE</h2>
+		<P>List of Languages</P>
+		<div class="">
+			{% for c in language %}
+			<ul>
+				<a href="{{url_for('showMovies',language_id=c.id)}}"><h4><font color="black">{{c.name}}</font></h4></a>
+				{% if 'username' in session %}
+				<button><a href="{{url_for('editLanguage',language_id=c.id)}}">edit</a></button>
+				<button><a href="{{url_for('deleteLanguage',language_id=c.id)}}">delete</a></button>
+				{% endif %}
+			</ul>
+			{% endfor %}
+		</div>	
+	</form>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<form action="{{url_for('deleteMovieList',movie_id=lists.movie_id,list_id=lists.id)}}" method="POST">
+		<button>Delete</button>
+		<button><a href="{{url_for('showMovies',language_id=lists.movie_id)}}">Cancel</a></button>
+	</form>
+</body>
+</html>
